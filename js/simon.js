@@ -56,9 +56,10 @@ function NoteBox(key, onClick) {
     notesQueue.push(this.key);
     console.log(notesQueue);
 		if (!enabled) return;
-
-		this.onClick(this.key)
-		this.play()
+    setTimeout(() => {
+      this.onClick(this.key)
+      this.play()
+    }, TIMEOUT_DURATION)
 	}.bind(this)
 
 	boxEl.addEventListener('mousedown', this.clickHandler);
@@ -75,6 +76,6 @@ KEYS.forEach(function (key) {
 	notes[key] = new NoteBox(key);
 });
 
-KEYS.concat(KEYS.slice().reverse()).forEach(function(key, i) {
-	setTimeout(notes[key].play.bind(null, key), i * NOTE_DURATION);
-});
+// KEYS.concat(KEYS.slice().reverse()).forEach(function(key, i) {
+// 	setTimeout(notes[key].play.bind(null, key), i * NOTE_DURATION);
+// });
