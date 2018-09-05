@@ -1,5 +1,7 @@
 var KEYS = ['c', 'd', 'e', 'f'];
 var NOTE_DURATION = 1000;
+var TIMEOUT_DURATION = 2500;
+var notesQueue = [];
 
 // NoteBox
 //
@@ -51,6 +53,8 @@ function NoteBox(key, onClick) {
 
 	// Call this NoteBox's clickHandler and play the note.
 	this.clickHandler = function () {
+    notesQueue.push(this.key);
+    console.log(notesQueue);
 		if (!enabled) return;
 
 		this.onClick(this.key)
