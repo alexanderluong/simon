@@ -6,7 +6,7 @@ Challenges and solutions:
 3.) Used this to iterate over notes 
   source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values
 4.) My enableAll() wasn't executing at the right time. I want it to execute after all the notes are done being played.
-  --> I put it into the play function
+  --> I put it into the play function. It's not perfect because sometimes the note boxes still accept input as they're being played.
 
 Thoughts:
 1.) For the easy task, since I want to disable the other noteboxes while one is playing, I'm thinking about using an array. For every notebox that's pressed, I'll add it to the end of the array. The array will be reading the first notebox. If there's no note currently playing, I'll play the note and shift the array.
