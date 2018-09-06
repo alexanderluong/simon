@@ -1,7 +1,6 @@
 var KEYS = ['c', 'd', 'e', 'f'];
 var NOTE_DURATION = 1000;
 var TIMEOUT_DURATION = 2500;
-var notesQueue = [];
 
 // NoteBox
 //
@@ -53,13 +52,13 @@ function NoteBox(key, onClick) {
 
 	// Call this NoteBox's clickHandler and play the note.
 	this.clickHandler = function () {
-    notesQueue.push(this.key);
-    console.log(notesQueue);
 		if (!enabled) return;
     setTimeout(() => {
+      disableAll();
       console.log("Play started");
       this.onClick(this.key);
       this.play();
+      enableAll();
     }, TIMEOUT_DURATION)
 	}.bind(this)
 
@@ -87,7 +86,7 @@ function disableAll() {
 // Enables all noteboxes
 function enableAll() {
   for (note of Object.values(notes)) {
-    note.disable();
+    note.enable();
   };
 }
 
