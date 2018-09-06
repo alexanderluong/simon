@@ -57,8 +57,9 @@ function NoteBox(key, onClick) {
     console.log(notesQueue);
 		if (!enabled) return;
     setTimeout(() => {
-      this.onClick(this.key)
-      this.play()
+      console.log("Play started");
+      this.onClick(this.key);
+      this.play();
     }, TIMEOUT_DURATION)
 	}.bind(this)
 
@@ -75,6 +76,21 @@ var notes = {};
 KEYS.forEach(function (key) {
 	notes[key] = new NoteBox(key);
 });
+
+// Disables all noteboxes
+function disableAll() {
+  for (note of Object.values(notes)) {
+    note.disable();
+  };
+}
+
+// Enables all noteboxes
+function enableAll() {
+  for (note of Object.values(notes)) {
+    note.disable();
+  };
+}
+
 
 // KEYS.concat(KEYS.slice().reverse()).forEach(function(key, i) {
 // 	setTimeout(notes[key].play.bind(null, key), i * NOTE_DURATION);
