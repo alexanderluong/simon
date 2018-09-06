@@ -36,6 +36,7 @@ function NoteBox(key, onClick) {
 			playing--
 			if (!playing) {
 				boxEl.classList.remove('active');
+        enableAll();
 			}
 		}, NOTE_DURATION)
 	}
@@ -55,10 +56,8 @@ function NoteBox(key, onClick) {
 		if (!enabled) return;
     setTimeout(() => {
       disableAll();
-      console.log("Play started");
       this.onClick(this.key);
       this.play();
-      enableAll();
     }, TIMEOUT_DURATION)
 	}.bind(this)
 
